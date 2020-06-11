@@ -117890,11 +117890,16 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var urlAxios = "http://localhost/ptsp_pemohon/api";
-var urlBase = "ptsp_pemohon";
-var urlWeb = "http://localhost/ptsp_pemohon";
-var assets = "http://localhost/ptsp_pemohon/public/starAdmin/assets/images";
-var perusahaanFile = "http://localhost/Resources/perusahaan";
+// const urlAxios = "http://localhost/ptsp_pemohon/api";
+// const urlBase = "ptsp_pemohon";
+// const urlWeb = "http://localhost/ptsp_pemohon";
+// const assets = "http://localhost/ptsp_pemohon/public/starAdmin/assets/images";
+// const perusahaanFile = "http://localhost/Resources/perusahaan";
+var urlAxios = "http://pemohon.appkepri.com/api";
+var urlBase = "";
+var urlWeb = "http://pemohon.appkepri.com";
+var assets = "http://pemohon.appkepri.com/public/starAdmin/assets/images";
+var perusahaanFile = "http://appkepri.com/Resources/perusahaan";
 /* harmony default export */ __webpack_exports__["default"] = ({
   urlAxios: urlAxios,
   urlBase: urlBase,
