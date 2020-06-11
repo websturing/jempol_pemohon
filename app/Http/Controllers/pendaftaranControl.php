@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use File;
+
+class pendaftaranControl extends Controller
+{
+    function index()
+    {
+        return view("panel.pendaftaran");
+    }
+
+
+    function ToSelf(Request $r)
+    {
+        $type = $r->get("type");
+        if ($type == "UploadFileKeabsahan") {
+            return self::UploadFileKeabsahan($r);
+        }
+    }
+
+    function UploadFileKeabsahan(Request $r)
+    {
+        date_default_timezone_set("Asia/Bangkok");
+        $timestamp = date("Y-m-d H:i:s");
+
+        $uploadData = $r->get("upload");
+        $perusahaan = $r->get("perusahaan");
+
+
+
+
+        /* directory */
+        $pathFolder = Storage::disk("ResourcesExternal")->path($perusahaan['npwp']);
+        if (!File::exists($pathFolder)) {
+            File::makeDirectory($pathFolder, $mode = 0777, true, true);
+        }
+
+        for ($i = 0; $i < count($uploadData); $i++) {
+
+            $expoloded = explode(",", $uploadData[$i]["files"]);
+            $decoded = base64_decode($expoloded[1]);
+            $extension =  "pdf";
+            $name = Str::slug($uploadData[$i]["name"], '_');
+            $filename = $name . '.' . $extension;
+            $path = Storage::disk("ResourcesExternal")->path($perusahaan['npwp'] . '/' . $filename);
+            file_put_contents($path, $decoded);
+        }
+        // $arPers = array(
+        //     "file" => $filename,
+        //     "updated_at" => $timestamp,
+        //     "user_uploaded_file" => Session::get("user_id"),
+        // );
+        // mdPermohonanPersyaratan::where("permohonan_persyaratanId", $persyaratan["permohonan_persyaratanId"])
+        //     ->update($arPers);
+
+        // return $filename;
+    }
+}
