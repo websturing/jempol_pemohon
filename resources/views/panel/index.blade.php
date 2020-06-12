@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{url('public/starAdmin/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use File;
+use App\Http\Controllers\perusahaanControl;
 
 class pendaftaranControl extends Controller
 {
@@ -20,6 +21,8 @@ class pendaftaranControl extends Controller
         $type = $r->get("type");
         if ($type == "UploadFileKeabsahan") {
             return self::UploadFileKeabsahan($r);
+        } elseif ($type == "daftar") {
+            return self::daftar($r);
         }
     }
 
@@ -59,5 +62,21 @@ class pendaftaranControl extends Controller
         //     ->update($arPers);
 
         // return $filename;
+    }
+
+    function daftar(Request $r)
+    {
+        $postperusahaan = $r->get("perusahaan");
+        $postupload = $r->get("upload");
+
+
+        $perusahaan = new Request();
+        $perusahaan->replace(['perusahaan' => $postperusahaan]);
+
+        $upload = new Request();
+        $upload->replace(['upload' => $postupload, 'perusahaan' => $postperusahaan]);
+
+        $perusahaan_id = perusahaanControl::Insertperusahaan($perusahaan);
+        self::UploadFileKeabsahan($upload);
     }
 }

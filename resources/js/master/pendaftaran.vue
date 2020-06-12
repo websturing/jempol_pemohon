@@ -187,6 +187,32 @@
         <iframe :src="objectURL"></iframe>
       </div>
     </div>
+
+    <!-- TERM AND CONDITION -->
+    <div
+      class="modal fade"
+      id="TermAndCondition"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -283,11 +309,11 @@ export default {
       empty: []
     };
   },
-  mounted() {
-    window.history.forward(1);
-    this.GetPerusahaan();
-  },
+  mounted() {},
   methods: {
+    term() {
+      $("#TermAndCondition").modal("show");
+    },
     GetPerusahaan() {
       axios
         .post(urlBase.urlWeb + "/master/perusahaan", {
@@ -306,30 +332,41 @@ export default {
       window.location.href = urlBase.urlWeb + "/dashboard";
     },
     Submit() {
-      this.$refs["login"].validate(valid => {
-        if (valid) {
-          this.isLoading = true;
-          axios
-            .post(urlBase.urlWeb + "/login/loginSubmit", {
-              login: this.login
-            })
-            .then(r => {
-              console.log(r);
-              (this.isLoading = false),
-                r.data.code === "500"
-                  ? this.notif(r.data.title, r.data.message, r.data.type)
-                  : this.redirect();
-            });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+      axios
+        .post(urlBase.urlWeb + "/pendaftaran/form", {
+          type: "daftar",
+          perusahaan: this.perusahaan,
+          upload: this.upload
+        })
+        .then(r => console.log(r));
+
+      // this.$refs["login"].validate(valid => {
+      //   if (valid) {
+      //     this.isLoading = true;
+      //     axios
+      //       .post(urlBase.urlWeb + "/login/loginSubmit", {
+      //         login: this.login
+      //       })
+      //       .then(r => {
+      //         console.log(r);
+      //         (this.isLoading = false),
+      //           r.data.code === "500"
+      //             ? this.notif(r.data.title, r.data.message, r.data.type)
+      //             : this.redirect();
+      //       });
+      //   } else {
+      //     console.log("error submit!!");
+      //     return false;
+      //   }
+      // });
     },
     nextStep() {
       let next = this.steps.active;
       if (next == 2) {
         this.CheckUpload();
+      } else if (next == 1) {
+        // this.Submit();
+        this.term();
       } else {
         this.stepButton();
       }

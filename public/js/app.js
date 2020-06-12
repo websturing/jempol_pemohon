@@ -4219,6 +4219,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4306,11 +4332,11 @@ __webpack_require__.r(__webpack_exports__);
       empty: []
     };
   },
-  mounted: function mounted() {
-    window.history.forward(1);
-    this.GetPerusahaan();
-  },
+  mounted: function mounted() {},
   methods: {
+    term: function term() {
+      $("#TermAndCondition").modal("show");
+    },
     GetPerusahaan: function GetPerusahaan() {
       var _this = this;
 
@@ -4331,28 +4357,40 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].urlWeb + "/dashboard";
     },
     Submit: function Submit() {
-      var _this2 = this;
-
-      this.$refs["login"].validate(function (valid) {
-        if (valid) {
-          _this2.isLoading = true;
-          axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].urlWeb + "/login/loginSubmit", {
-            login: _this2.login
-          }).then(function (r) {
-            console.log(r);
-            _this2.isLoading = false, r.data.code === "500" ? _this2.notif(r.data.title, r.data.message, r.data.type) : _this2.redirect();
-          });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+      axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].urlWeb + "/pendaftaran/form", {
+        type: "daftar",
+        perusahaan: this.perusahaan,
+        upload: this.upload
+      }).then(function (r) {
+        return console.log(r);
+      }); // this.$refs["login"].validate(valid => {
+      //   if (valid) {
+      //     this.isLoading = true;
+      //     axios
+      //       .post(urlBase.urlWeb + "/login/loginSubmit", {
+      //         login: this.login
+      //       })
+      //       .then(r => {
+      //         console.log(r);
+      //         (this.isLoading = false),
+      //           r.data.code === "500"
+      //             ? this.notif(r.data.title, r.data.message, r.data.type)
+      //             : this.redirect();
+      //       });
+      //   } else {
+      //     console.log("error submit!!");
+      //     return false;
+      //   }
+      // });
     },
     nextStep: function nextStep() {
       var next = this.steps.active;
 
       if (next == 2) {
         this.CheckUpload();
+      } else if (next == 1) {
+        // this.Submit();
+        this.term();
       } else {
         this.stepButton();
       }
@@ -4384,7 +4422,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     changeFile: function changeFile(i, event) {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.objectURL) {
         URL.revokeObjectURL(this.objectURL);
@@ -4403,7 +4441,7 @@ __webpack_require__.r(__webpack_exports__);
       fileReader.readAsDataURL(event.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this3.upload[i].files = e.target.result;
+        _this2.upload[i].files = e.target.result;
       };
     },
     pratinjau: function pratinjau(i) {
@@ -102321,7 +102359,9 @@ var render = function() {
             _c("iframe", { attrs: { src: _vm.objectURL } })
           ])
         ]
-      )
+      ),
+      _vm._v(" "),
+      _vm._m(1)
     ]
   )
 }
@@ -102337,6 +102377,80 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Terms")])])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "TermAndCondition",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [_vm._v("Modal title")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [_vm._v("...")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
+                  [_vm._v("Save changes")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -117890,16 +118004,16 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var urlAxios = "http://localhost/ptsp_pemohon/api";
-var urlBase = "ptsp_pemohon";
-var urlWeb = "http://localhost/ptsp_pemohon";
-var assets = "http://localhost/ptsp_pemohon/public/starAdmin/assets/images";
-var perusahaanFile = "http://localhost/Resources/perusahaan"; // const urlAxios = "http://pemohon.appkepri.com/api";
-// const urlBase = "";
-// const urlWeb = "http://pemohon.appkepri.com";
-// const assets = "http://pemohon.appkepri.com/public/starAdmin/assets/images";
-// const perusahaanFile = "http://appkepri.com/Resources/perusahaan";
-
+// const urlAxios = "http://localhost/ptsp_pemohon/api";
+// const urlBase = "ptsp_pemohon";
+// const urlWeb = "http://localhost/ptsp_pemohon";
+// const assets = "http://localhost/ptsp_pemohon/public/starAdmin/assets/images";
+// const perusahaanFile = "http://localhost/Resources/perusahaan";
+var urlAxios = "http://pemohon.appkepri.com/api";
+var urlBase = "";
+var urlWeb = "http://pemohon.appkepri.com";
+var assets = "http://pemohon.appkepri.com/public/starAdmin/assets/images";
+var perusahaanFile = "http://appkepri.com/Resources/perusahaan";
 /* harmony default export */ __webpack_exports__["default"] = ({
   urlAxios: urlAxios,
   urlBase: urlBase,

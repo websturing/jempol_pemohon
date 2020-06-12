@@ -11,6 +11,12 @@
 |
 */
 
+
+Route::get("/pendaftaran", "pendaftaranControl@index");
+Route::post("/pendaftaran/form", "pendaftaranControl@ToSelf");
+
+
+
 Route::post("/master/modul", "modulControl@index");
 Route::post("/master/acl", "aclControl@index");
 Route::POST("/master/aclGroup", "aclGroupControl@index");
@@ -26,8 +32,7 @@ Route::GET("/login", "appControl@login");
 Route::POST("/login/loginSubmit", "appControl@loginSubmit");
 Route::get("/logout", "appControl@logout");
 
-Route::get("/pendaftaran", "pendaftaranControl@index");
-Route::POST("/pendaftaran/form", "pendaftaranControl@ToSelf");
+
 
 Route::get("/acl", "aclControl@index");
 Route::post("/aclgetR", "aclControl@aclGet");
