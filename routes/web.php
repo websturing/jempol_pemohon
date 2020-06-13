@@ -13,6 +13,8 @@
 
 
 Route::get("/pendaftaran", "pendaftaranControl@index");
+Route::get("/pendaftaran/selesai", "pendaftaranControl@pendaftaranSelesai");
+Route::get("/pendaftaran/sendemail", "pendaftaranControl@SendEmailConfirmation");
 Route::post("/pendaftaran/form", "pendaftaranControl@ToSelf");
 
 

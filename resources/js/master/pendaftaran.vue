@@ -24,11 +24,20 @@
               <el-step title="Step 2" description="Berkas keabasahaan Perusahaan"></el-step>
               <el-step title="Step 3" description="Selesai"></el-step>
             </el-steps>
-            <el-form :model="perusahaan" :label-position="'top'" style="min-height:350px">
+            <el-form
+              :model="perusahaan"
+              :label-position="'top'"
+              style="min-height:350px"
+              ref="pendaftaranRefs"
+            >
               <div v-show="steps.body[0]">
                 <el-row>
                   <el-col :span="11">
-                    <el-form-item label="NPWP">
+                    <el-form-item
+                      label="NPWP"
+                      prop="npwp"
+                      :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
+                    >
                       <el-input
                         size="small"
                         v-model="perusahaan.npwp"
@@ -41,11 +50,16 @@
                 </el-row>
                 <el-row :gutter="10">
                   <el-col :md="3">
-                    <el-form-item label="KATEGORI" class="itemWarp">
+                    <el-form-item
+                      label="KATEGORI"
+                      class="itemWarp"
+                      prop="kategori"
+                      :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
+                    >
                       <el-input
                         size="small"
                         v-model="perusahaan.kategori"
-                        placeholder="NPWP"
+                        placeholder="Kategori"
                         style="width: 100%;"
                         class="itemDS"
                         :disabled="readonly"
@@ -53,7 +67,12 @@
                     </el-form-item>
                   </el-col>
                   <el-col :md="11">
-                    <el-form-item label="NAMA" class="itemWarp">
+                    <el-form-item
+                      label="NAMA"
+                      class="itemWarp"
+                      prop="nama"
+                      :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
+                    >
                       <el-input
                         size="small"
                         v-model="perusahaan.nama"
@@ -67,7 +86,12 @@
                 </el-row>
                 <el-row :gutter="10">
                   <el-col :md="9">
-                    <el-form-item label="EMAIL" class="itemWarp">
+                    <el-form-item
+                      label="EMAIL"
+                      class="itemWarp"
+                      prop="email"
+                      :rules="[{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }, { type:'email', message: 'Email tidak valid', trigger: 'blur' }]"
+                    >
                       <el-input
                         size="small"
                         v-model="perusahaan.email"
@@ -79,7 +103,12 @@
                     </el-form-item>
                   </el-col>
                   <el-col :md="5">
-                    <el-form-item label="Hp" class="itemWarp">
+                    <el-form-item
+                      label="Hp"
+                      class="itemWarp"
+                      prop="contact"
+                      :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
+                    >
                       <el-input
                         size="small"
                         v-model="perusahaan.contact"
@@ -93,7 +122,12 @@
                 </el-row>
                 <el-row :gutter="10">
                   <el-col :md="18">
-                    <el-form-item label="ALAMAT" class="itemWarp">
+                    <el-form-item
+                      label="ALAMAT"
+                      class="itemWarp"
+                      prop="alamat"
+                      :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
+                    >
                       <el-input
                         size="small"
                         type="textarea"
@@ -197,18 +231,140 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Term & Condition</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body" id="TermContent">
+            <div
+              style="color: rgb(75, 75, 75); font-family: KohinoorDevanagari, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; background-color: rgb(243, 243, 243);"
+            >Selamat Datang di Situs Web kami! Kami berharap bahwa Anda akan menikmati pengalaman online Anda.</div>
+            <div
+              style="color: rgb(75, 75, 75); font-family: KohinoorDevanagari, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; background-color: rgb(243, 243, 243);"
+            >
+              <br />Wyeth Nutrition Parenting Club berkomitmen untuk menjaga kepercayaan dengan pengguna Situs Web kami. Persyaratan di bawah ini mengatur penggunaan Anda atas situs web ini.
+              <br />&nbsp;
+            </div>
+            <ol
+              style="margin-bottom: 0px; padding-left: 1.25rem; color: rgb(75, 75, 75); font-family: KohinoorDevanagari, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; background-color: rgb(243, 243, 243);"
+            >
+              <li>
+                Penggunaan yang dapat diterima
+                <p style="margin-bottom: 1.5rem;">
+                  <br />Silakan menjelajahi Situs Web kami dengan leluasa dan, jika tersedia, kontribusi bahan untuk itu, seperti pertanyaan, posting dan konten multimedia (misalnya gambar, video).
+                  <br />&nbsp;
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                  Namun, penggunaan Situs Web dan bahan yang diposting ke situs ini seharusnya bukan yang ilegal atau yang menyinggung dengan cara apapun. Anda harus berhati-hati untuk tidak:
+                  <br />&nbsp;
+                </p>
+                <ul style="padding-left: 1.25rem;">
+                  <li>(a)&nbsp;melanggar hak orang lain untuk privasi;</li>
+                  <li>(b)&nbsp;melanggar hak kekayaan intelektual;</li>
+                  <li>(c)&nbsp;membuat pernyataan yang memfitnah (termasuk terhadap Wyeth Nutrition), berhubungan dengan pornografi, bersifat rasis atau xenofobia, mempromosikan kebencian atau menghasut kekerasan atau gangguan;</li>
+                  <li>(d)&nbsp;mengunggah file yang berisi virus atau dapat menyebabkan masalah keamanan; atau</li>
+                  <li>(e)&nbsp;tidak membahayakan integritas Situs Web.</li>
+                </ul>
+                <p style="margin-bottom: 1.5rem;">
+                  <br />Harap dicatat bahwa Wyeth Nutrition dapat menghapus konten apapun dari Situs Web yang dipercaya mungkin ilegal atau menyinggung.
+                  <br />&nbsp;
+                </p>
+              </li>
+              <li>
+                Perlindungan Data
+                <p style="margin-bottom: 1.5rem;">
+                  <br />Pernyataan Privasi kami berlaku untuk data pribadi atau bahan yang dibagi bersama pada Situs Web ini. Cari tahu lebih lanjut&nbsp;
+                  <a
+                    href="https://www.parentingclub.co.id/page/privacy-policy"
+                    style="color: rgb(208, 92, 76); touch-action: manipulation; transition: all 0.2s ease-in-out 0s;"
+                  >di sini</a>
+                  <br />&nbsp;
+                </p>
+              </li>
+              <li>
+                Kekayaan Intelektual
+                <p style="margin-bottom: 1.5rem;">&nbsp;</p>
+                <ul style="padding-left: 1.25rem;">
+                  <li>
+                    3.1. Konten yang disediakan oleh Wyeth Nutrition
+                    <p style="margin-bottom: 1.5rem;">
+                      <br />Semua hak kekayaan intelektual, termasuk hak cipta dan merek dagang, bahan yang diterbitkan oleh atau atas nama Wyeth Nutrition di Situs Web (misalnya teks dan gambar) yang dimiliki oleh Wyeth Nutrition atau pemberi lisensinya.
+                      <br />&nbsp;
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                      Anda mungkin mereproduksi ekstrak dari Situs Web ini untuk penggunaan pribadi Anda sendiri (misalnya penggunaan non-komersial) asalkan Anda menyimpan semua hak kekayaan intelektual secara utuh dan dengan rasa hormat, termasuk pemberitahuan hak cipta yang mungkin muncul di konten tersebut (misalnya @2014 Wyeth Nutrition).
+                      <br />&nbsp;
+                    </p>
+                  </li>
+                  <li>
+                    3.2. Konten Anda sediakan
+                    <p style="margin-bottom: 1.5rem;">
+                      <br />Anda mewakili untuk Wyeth Nutrition bahwa Anda baik sebagai penulis konten yang Anda kontribusikan ke Situs Web ini, ataupun bahwa Anda memiliki hak (yaitu: telah diberi izin oleh pemegang hak) dan mampu memberikan kontribusi atas konten tersebut (misalnya gambar, video, musik) ke Situs Web.
+                      <br />&nbsp;
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                      Anda setuju bahwa konten tersebut akan diperlakukan sebagai bukan rahasia dan Anda memberikan Wyeth Nutrition royalti, berkelanjutan, dan lisensi luas secara gratis untuk menggunakan (termasuk untuk mengungkapkan, mereproduksi, mentransmisikan, mempublikasikan, atau menyiarkan) konten yang Anda berikan untuk tujuan yang berkaitan dengan bisnisnya.
+                      <br />&nbsp;
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                      Harap dicatat bahwa Wyeth Nutrition bebas untuk memutuskan apakah menggunakan atau tidak menggunakan konten ini dan bahwa Wyeth Nutrition mungkin telah mengembangkan edisi serupa atau telah memperoleh konten tersebut dari sumber lain, dalam hal ini semua hak kekayaan intelektual di konten ini tetap ada pada Wyeth Nutrition dan pemberi lisensinya.
+                      <br />&nbsp;
+                    </p>
+                  </li>
+                  <li>
+                    3.3. Kewajiban
+                    <p style="margin-bottom: 1.5rem;">
+                      <br />Sementara Wyeth Nutrition menggunakan semua upaya yang wajar untuk memastikan keakuratan dari bahan pada Situs Web kami dan untuk menghindari gangguan, kami tidak bertanggung jawab atas informasi yang tidak akurat, gangguan, penghentian atau peristiwa lain yang dapat menyebabkan Anda mengalami kerugian, baik secara langsung (misalnya kegagalan komputer) atau tidak langsung (misalnya kehilangan keuntungan). Setiap ketergantungan pada bahan-bahan dalam situs Web ini akan menjadi risiko Anda sendiri.
+                      <br />&nbsp;
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                      Situs Web ini mungkin berisi hubungan ke situs-situs web di luar Wyeth Nutrition. Wyeth Nutrition tidak memiliki kontrol atas situs web pihak ketiga tersebut, tidak selalu mendukung mereka dan tidak bertanggung jawab untuk mereka, termasuk untuk konten, akurasi atau fungsi mereka. Sebagai akibatnya, kami mengharapkan agar Anda berhati-hati dalam meninjau pernyataan hukum situs-situs web pihak ketiga tersebut, termasuk menjaga diri tetap mengetahui informasi mengenai perubahan atas mereka.
+                      <br />&nbsp;
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                      Anda dapat mengoperasikan situs pihak ketiga dan menginginkan hubungan ke Situs Web ini. Dalam hal ini, Wyeth Nutrition tidak keberatan dengan hubungan seperti itu asalkan Anda menggunakan homepage URL yang tepat dari Situs Web ini (misalnya hubungan yang tidak dalam) dan tidak menyarankan dengan cara apapun yang Anda berafiliasi dengan atau didukung oleh Wyeth Nutrition. Anda tidak harus menggunakan "framing" atau praktik serupa, dan harus memastikan bahwa hubungan ke Situs Web membuka pada jendela baru.
+                      <br />&nbsp;
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Kontak kita
+                <p style="margin-bottom: 1.5rem;">
+                  <br />Situs ini dioperasikan oleh PT. WYETH NUTRITION SDUAENAM
+                  <br />&nbsp;
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                  Jika Anda memiliki pertanyaan atau komentar tentang Situs Web, jangan ragu untuk menghubungi kami melalui (i) telepon di 080018-21028 atau (ii) surat biasa di Perkantoran Hijau Arkadia, Jl. Let Jen. TB. Simatupang Kav. 88, Jakarta 12520, Indonesia. PO BOX 5555, Jakarta 12000.
+                  <br />&nbsp;
+                </p>
+              </li>
+              <li>
+                Perubahan
+                <p style="margin-bottom: 1.5rem;">
+                  <br />Wyeth Nutrition memiliki hak untuk membuat perubahan atas persyaratan penggunaan ini. Silakan lihat halaman ini pada setiap saat untuk meninjau persyaratan penggunaan dan informasi baru.
+                  <br />&nbsp;
+                </p>
+              </li>
+              <li>
+                Hukum dan yurisdiksi yang mengatur
+                <p style="margin-bottom: 1.5rem;">
+                  <br />Situs Web ini ditujukan untuk pengguna dari Indonesia saja. Wyeth Nutrition tidak membuat pernyataan bahwa produk dan konten Situs Web ini sesuai atau tersedia di lokasi selain Indonesia.
+                  <br />&nbsp;
+                </p>
+                <p
+                  style="margin-bottom: 1.5rem;"
+                >Anda dan Wyeth Nutrition setuju bahwa setiap klaim atau sengketa yang berkaitan dengan situs web ini akan diatur oleh hukum Republik dan dibawa ke pengadilan dari Jakarta Selatan di Indonesia.</p>
+              </li>
+            </ol>
+          </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <el-checkbox v-model="checked">Saya Setujui term & Condition</el-checkbox>&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary" @click="Submit()">Daftar</button>
           </div>
         </div>
       </div>
@@ -223,7 +379,7 @@ export default {
     return {
       widthPratinjau: "0%",
       objectURL: null,
-      accepts: ["image/*", "application/pdf"].join(","),
+      accepts: ["application/pdf"].join(","),
       perusahaan: {
         perusahaan_id: null,
         perusahaan_code: null,
@@ -332,43 +488,36 @@ export default {
       window.location.href = urlBase.urlWeb + "/dashboard";
     },
     Submit() {
-      axios
-        .post(urlBase.urlWeb + "/pendaftaran/form", {
-          type: "daftar",
-          perusahaan: this.perusahaan,
-          upload: this.upload
-        })
-        .then(r => console.log(r));
-
-      // this.$refs["login"].validate(valid => {
-      //   if (valid) {
-      //     this.isLoading = true;
-      //     axios
-      //       .post(urlBase.urlWeb + "/login/loginSubmit", {
-      //         login: this.login
-      //       })
-      //       .then(r => {
-      //         console.log(r);
-      //         (this.isLoading = false),
-      //           r.data.code === "500"
-      //             ? this.notif(r.data.title, r.data.message, r.data.type)
-      //             : this.redirect();
-      //       });
-      //   } else {
-      //     console.log("error submit!!");
-      //     return false;
-      //   }
-      // });
+      this.$refs["pendaftaranRefs"].validate(valid => {
+        if (valid) {
+          axios
+            .post(urlBase.urlWeb + "/pendaftaran/form", {
+              type: "daftar",
+              perusahaan: this.perusahaan,
+              upload: this.upload
+            })
+            .then(r => console.log(r));
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     },
     nextStep() {
       let next = this.steps.active;
       if (next == 2) {
         this.CheckUpload();
-      } else if (next == 1) {
-        // this.Submit();
+      } else if (next == 3) {
         this.term();
       } else {
-        this.stepButton();
+        this.$refs["pendaftaranRefs"].validate(valid => {
+          if (valid) {
+            this.stepButton();
+          } else {
+            console.log("error submit!!");
+            return false;
+          }
+        });
       }
     },
     stepButton() {
@@ -448,7 +597,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 .itemDS {
   top: -30px !important;
   width: 100% !important;
@@ -548,5 +697,13 @@ iframe {
   width: 100%;
   height: 600px;
   overflow: scroll;
+}
+
+#TermContent {
+  height: 400px;
+  overflow: scroll;
+}
+.el-form-item__error {
+  top: 10px !important;
 }
 </style>

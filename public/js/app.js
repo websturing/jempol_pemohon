@@ -4245,13 +4245,169 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       widthPratinjau: "0%",
       objectURL: null,
-      accepts: ["image/*", "application/pdf"].join(","),
+      accepts: ["application/pdf"].join(","),
       perusahaan: {
         perusahaan_id: null,
         perusahaan_code: null,
@@ -4357,42 +4513,41 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].urlWeb + "/dashboard";
     },
     Submit: function Submit() {
-      axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].urlWeb + "/pendaftaran/form", {
-        type: "daftar",
-        perusahaan: this.perusahaan,
-        upload: this.upload
-      }).then(function (r) {
-        return console.log(r);
-      }); // this.$refs["login"].validate(valid => {
-      //   if (valid) {
-      //     this.isLoading = true;
-      //     axios
-      //       .post(urlBase.urlWeb + "/login/loginSubmit", {
-      //         login: this.login
-      //       })
-      //       .then(r => {
-      //         console.log(r);
-      //         (this.isLoading = false),
-      //           r.data.code === "500"
-      //             ? this.notif(r.data.title, r.data.message, r.data.type)
-      //             : this.redirect();
-      //       });
-      //   } else {
-      //     console.log("error submit!!");
-      //     return false;
-      //   }
-      // });
+      var _this2 = this;
+
+      this.$refs["pendaftaranRefs"].validate(function (valid) {
+        if (valid) {
+          axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].urlWeb + "/pendaftaran/form", {
+            type: "daftar",
+            perusahaan: _this2.perusahaan,
+            upload: _this2.upload
+          }).then(function (r) {
+            return console.log(r);
+          });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     },
     nextStep: function nextStep() {
+      var _this3 = this;
+
       var next = this.steps.active;
 
       if (next == 2) {
         this.CheckUpload();
-      } else if (next == 1) {
-        // this.Submit();
+      } else if (next == 3) {
         this.term();
       } else {
-        this.stepButton();
+        this.$refs["pendaftaranRefs"].validate(function (valid) {
+          if (valid) {
+            _this3.stepButton();
+          } else {
+            console.log("error submit!!");
+            return false;
+          }
+        });
       }
     },
     stepButton: function stepButton() {
@@ -4422,7 +4577,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     changeFile: function changeFile(i, event) {
-      var _this2 = this;
+      var _this4 = this;
 
       if (this.objectURL) {
         URL.revokeObjectURL(this.objectURL);
@@ -4441,7 +4596,7 @@ __webpack_require__.r(__webpack_exports__);
       fileReader.readAsDataURL(event.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this2.upload[i].files = e.target.result;
+        _this4.upload[i].files = e.target.result;
       };
     },
     pratinjau: function pratinjau(i) {
@@ -4474,6 +4629,61 @@ __webpack_require__.r(__webpack_exports__);
         this.stepButton();
       }
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaranSelesai.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/master/pendaftaranSelesai.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      url: {
+        assets: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].assets,
+        web: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].urlWeb
+      }
+    };
   }
 });
 
@@ -10871,10 +11081,10 @@ exports.push([module.i, "\n.itemDS[data-v-3bd692e4] {\n  top: -20px !important;\
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css&":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css& ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10883,7 +11093,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.itemDS[data-v-d3f4e5da] {\n  top: -30px !important;\n  width: 100% !important;\n}\n.itemWarp[data-v-d3f4e5da] {\n  margin-top: -40px !important;\n  font-size: 9px !important;\n}\ninput[type=\"file\"][data-v-d3f4e5da] {\n  display: none;\n}\n.custom-file-upload[data-v-d3f4e5da] {\n  border: 3px dashed #ccc;\n  display: inline-block;\n  padding: 80px 20px 20px 20px;\n  cursor: pointer;\n  width: 100%;\n  text-align: center;\n  vertical-align: middle;\n  min-height: 220px;\n}\n.custom-file-upload-error[data-v-d3f4e5da] {\n  border: 3px dashed red;\n}\n.custom-file-upload-success[data-v-d3f4e5da] {\n  border: 3px dashed green;\n}\n.overlay-popup[data-v-d3f4e5da] {\n  height: 100%;\n  width: 0;\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.9);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.overlay-popup-content[data-v-d3f4e5da] {\n  position: relative;\n  top: 15%;\n  width: 100%;\n  text-align: center;\n  margin-top: 5px;\n  padding: 10px 50px 10px 50px;\n}\n.overlay-popup a[data-v-d3f4e5da] {\n  padding: 8px;\n  text-decoration: none;\n  font-size: 36px;\n  color: #818181;\n  display: block;\n  transition: 0.3s;\n}\n.overlay-popup a[data-v-d3f4e5da]:hover,\n.overlay-popup a[data-v-d3f4e5da]:focus {\n  color: #f1f1f1;\n}\n.overlay-popup .closebtn[data-v-d3f4e5da] {\n  position: absolute;\n  top: 20px;\n  right: 45px;\n  font-size: 60px;\n}\n@media screen and (max-height: 450px) {\n.overlay-popup a[data-v-d3f4e5da] {\n    font-size: 20px;\n}\n.overlay-popup .closebtn[data-v-d3f4e5da] {\n    font-size: 40px;\n    top: 15px;\n    right: 35px;\n}\n}\n@media screen and (max-width: 450px) {\nobject[data-v-d3f4e5da],\n  iframe[data-v-d3f4e5da] {\n    border: 3px solid #cecece;\n    background: #e9e9e9;\n    width: 100%;\n    height: 100px;\n    overflow: scroll;\n}\n}\nobject[data-v-d3f4e5da],\niframe[data-v-d3f4e5da] {\n  border: 3px solid #cecece;\n  background: #e9e9e9;\n  width: 100%;\n  height: 600px;\n  overflow: scroll;\n}\n", ""]);
+exports.push([module.i, "\n.itemDS {\n  top: -30px !important;\n  width: 100% !important;\n}\n.itemWarp {\n  margin-top: -40px !important;\n  font-size: 9px !important;\n}\ninput[type=\"file\"] {\n  display: none;\n}\n.custom-file-upload {\n  border: 3px dashed #ccc;\n  display: inline-block;\n  padding: 80px 20px 20px 20px;\n  cursor: pointer;\n  width: 100%;\n  text-align: center;\n  vertical-align: middle;\n  min-height: 220px;\n}\n.custom-file-upload-error {\n  border: 3px dashed red;\n}\n.custom-file-upload-success {\n  border: 3px dashed green;\n}\n.overlay-popup {\n  height: 100%;\n  width: 0;\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.9);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.overlay-popup-content {\n  position: relative;\n  top: 15%;\n  width: 100%;\n  text-align: center;\n  margin-top: 5px;\n  padding: 10px 50px 10px 50px;\n}\n.overlay-popup a {\n  padding: 8px;\n  text-decoration: none;\n  font-size: 36px;\n  color: #818181;\n  display: block;\n  transition: 0.3s;\n}\n.overlay-popup a:hover,\n.overlay-popup a:focus {\n  color: #f1f1f1;\n}\n.overlay-popup .closebtn {\n  position: absolute;\n  top: 20px;\n  right: 45px;\n  font-size: 60px;\n}\n@media screen and (max-height: 450px) {\n.overlay-popup a {\n    font-size: 20px;\n}\n.overlay-popup .closebtn {\n    font-size: 40px;\n    top: 15px;\n    right: 35px;\n}\n}\n@media screen and (max-width: 450px) {\nobject,\n  iframe {\n    border: 3px solid #cecece;\n    background: #e9e9e9;\n    width: 100%;\n    height: 100px;\n    overflow: scroll;\n}\n}\nobject,\niframe {\n  border: 3px solid #cecece;\n  background: #e9e9e9;\n  width: 100%;\n  height: 600px;\n  overflow: scroll;\n}\n#TermContent {\n  height: 400px;\n  overflow: scroll;\n}\n.el-form-item__error {\n  top: 10px !important;\n}\n", ""]);
 
 // exports
 
@@ -100155,15 +100365,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css&");
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -101717,10 +101927,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&scoped=true&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&scoped=true& ***!
-  \**********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da& ***!
+  \**********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -101821,6 +102031,7 @@ var render = function() {
                   _c(
                     "el-form",
                     {
+                      ref: "pendaftaranRefs",
                       staticStyle: { "min-height": "350px" },
                       attrs: { model: _vm.perusahaan, "label-position": "top" }
                     },
@@ -101847,7 +102058,17 @@ var render = function() {
                                 [
                                   _c(
                                     "el-form-item",
-                                    { attrs: { label: "NPWP" } },
+                                    {
+                                      attrs: {
+                                        label: "NPWP",
+                                        prop: "npwp",
+                                        rules: {
+                                          required: true,
+                                          message: "field tidak boleh kosong",
+                                          trigger: "blur"
+                                        }
+                                      }
+                                    },
                                     [
                                       _c("el-input", {
                                         staticClass: "itemDS",
@@ -101890,7 +102111,15 @@ var render = function() {
                                     "el-form-item",
                                     {
                                       staticClass: "itemWarp",
-                                      attrs: { label: "KATEGORI" }
+                                      attrs: {
+                                        label: "KATEGORI",
+                                        prop: "kategori",
+                                        rules: {
+                                          required: true,
+                                          message: "field tidak boleh kosong",
+                                          trigger: "blur"
+                                        }
+                                      }
                                     },
                                     [
                                       _c("el-input", {
@@ -101898,7 +102127,7 @@ var render = function() {
                                         staticStyle: { width: "100%" },
                                         attrs: {
                                           size: "small",
-                                          placeholder: "NPWP",
+                                          placeholder: "Kategori",
                                           disabled: _vm.readonly
                                         },
                                         model: {
@@ -101928,7 +102157,15 @@ var render = function() {
                                     "el-form-item",
                                     {
                                       staticClass: "itemWarp",
-                                      attrs: { label: "NAMA" }
+                                      attrs: {
+                                        label: "NAMA",
+                                        prop: "nama",
+                                        rules: {
+                                          required: true,
+                                          message: "field tidak boleh kosong",
+                                          trigger: "blur"
+                                        }
+                                      }
                                     },
                                     [
                                       _c("el-input", {
@@ -101975,7 +102212,22 @@ var render = function() {
                                     "el-form-item",
                                     {
                                       staticClass: "itemWarp",
-                                      attrs: { label: "EMAIL" }
+                                      attrs: {
+                                        label: "EMAIL",
+                                        prop: "email",
+                                        rules: [
+                                          {
+                                            required: true,
+                                            message: "field tidak boleh kosong",
+                                            trigger: "blur"
+                                          },
+                                          {
+                                            type: "email",
+                                            message: "Email tidak valid",
+                                            trigger: "blur"
+                                          }
+                                        ]
+                                      }
                                     },
                                     [
                                       _c("el-input", {
@@ -102015,7 +102267,15 @@ var render = function() {
                                     "el-form-item",
                                     {
                                       staticClass: "itemWarp",
-                                      attrs: { label: "Hp" }
+                                      attrs: {
+                                        label: "Hp",
+                                        prop: "contact",
+                                        rules: {
+                                          required: true,
+                                          message: "field tidak boleh kosong",
+                                          trigger: "blur"
+                                        }
+                                      }
                                     },
                                     [
                                       _c("el-input", {
@@ -102062,7 +102322,15 @@ var render = function() {
                                     "el-form-item",
                                     {
                                       staticClass: "itemWarp",
-                                      attrs: { label: "ALAMAT" }
+                                      attrs: {
+                                        label: "ALAMAT",
+                                        prop: "alamat",
+                                        rules: {
+                                          required: true,
+                                          message: "field tidak boleh kosong",
+                                          trigger: "blur"
+                                        }
+                                      }
                                     },
                                     [
                                       _c("el-input", {
@@ -102361,7 +102629,70 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._m(1)
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "TermAndCondition",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-xl",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "modal-footer" },
+                  [
+                    _c(
+                      "el-checkbox",
+                      {
+                        model: {
+                          value: _vm.checked,
+                          callback: function($$v) {
+                            _vm.checked = $$v
+                          },
+                          expression: "checked"
+                        }
+                      },
+                      [_vm._v("Saya Setujui term & Condition")]
+                    ),
+                    _vm._v("   \n          "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.Submit()
+                          }
+                        }
+                      },
+                      [_vm._v("Daftar")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
+        ]
+      )
     ]
   )
 }
@@ -102382,68 +102713,307 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Term & Condition")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "TermAndCondition",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
-        }
-      },
+      { staticClass: "modal-body", attrs: { id: "TermContent" } },
       [
         _c(
           "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          {
+            staticStyle: {
+              color: "rgb(75, 75, 75)",
+              "font-family":
+                'KohinoorDevanagari, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+              "background-color": "rgb(243, 243, 243)"
+            }
+          },
           [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" }
-                  },
-                  [_vm._v("Modal title")]
+            _vm._v(
+              "Selamat Datang di Situs Web kami! Kami berharap bahwa Anda akan menikmati pengalaman online Anda."
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticStyle: {
+              color: "rgb(75, 75, 75)",
+              "font-family":
+                'KohinoorDevanagari, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+              "background-color": "rgb(243, 243, 243)"
+            }
+          },
+          [
+            _c("br"),
+            _vm._v(
+              "Wyeth Nutrition Parenting Club berkomitmen untuk menjaga kepercayaan dengan pengguna Situs Web kami. Persyaratan di bawah ini mengatur penggunaan Anda atas situs web ini.\n            "
+            ),
+            _c("br"),
+            _vm._v(" \n          ")
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "ol",
+          {
+            staticStyle: {
+              "margin-bottom": "0px",
+              "padding-left": "1.25rem",
+              color: "rgb(75, 75, 75)",
+              "font-family":
+                'KohinoorDevanagari, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+              "background-color": "rgb(243, 243, 243)"
+            }
+          },
+          [
+            _c("li", [
+              _vm._v(
+                "\n              Penggunaan yang dapat diterima\n              "
+              ),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _c("br"),
+                _vm._v(
+                  "Silakan menjelajahi Situs Web kami dengan leluasa dan, jika tersedia, kontribusi bahan untuk itu, seperti pertanyaan, posting dan konten multimedia (misalnya gambar, video).\n                "
                 ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
+                _c("br"),
+                _vm._v(" \n              ")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [_vm._v("...")]),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _vm._v(
+                  "\n                Namun, penggunaan Situs Web dan bahan yang diposting ke situs ini seharusnya bukan yang ilegal atau yang menyinggung dengan cara apapun. Anda harus berhati-hati untuk tidak:\n                "
+                ),
+                _c("br"),
+                _vm._v(" \n              ")
+              ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
+              _c("ul", { staticStyle: { "padding-left": "1.25rem" } }, [
+                _c("li", [
+                  _vm._v("(a) melanggar hak orang lain untuk privasi;")
+                ]),
+                _vm._v(" "),
+                _c("li", [_vm._v("(b) melanggar hak kekayaan intelektual;")]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "(c) membuat pernyataan yang memfitnah (termasuk terhadap Wyeth Nutrition), berhubungan dengan pornografi, bersifat rasis atau xenofobia, mempromosikan kebencian atau menghasut kekerasan atau gangguan;"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "(d) mengunggah file yang berisi virus atau dapat menyebabkan masalah keamanan; atau"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("(e) tidak membahayakan integritas Situs Web.")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _c("br"),
+                _vm._v(
+                  "Harap dicatat bahwa Wyeth Nutrition dapat menghapus konten apapun dari Situs Web yang dipercaya mungkin ilegal atau menyinggung.\n                "
+                ),
+                _c("br"),
+                _vm._v(" \n              ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("\n              Perlindungan Data\n              "),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _c("br"),
+                _vm._v(
+                  "Pernyataan Privasi kami berlaku untuk data pribadi atau bahan yang dibagi bersama pada Situs Web ini. Cari tahu lebih lanjut \n                "
+                ),
                 _c(
-                  "button",
+                  "a",
                   {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-dismiss": "modal" }
+                    staticStyle: {
+                      color: "rgb(208, 92, 76)",
+                      "touch-action": "manipulation",
+                      transition: "all 0.2s ease-in-out 0s"
+                    },
+                    attrs: {
+                      href:
+                        "https://www.parentingclub.co.id/page/privacy-policy"
+                    }
                   },
-                  [_vm._v("Close")]
+                  [_vm._v("di sini")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Save changes")]
+                _c("br"),
+                _vm._v(" \n              ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("\n              Kekayaan Intelektual\n              "),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _vm._v(" ")
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticStyle: { "padding-left": "1.25rem" } }, [
+                _c("li", [
+                  _vm._v(
+                    "\n                  3.1. Konten yang disediakan oleh Wyeth Nutrition\n                  "
+                  ),
+                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                    _c("br"),
+                    _vm._v(
+                      "Semua hak kekayaan intelektual, termasuk hak cipta dan merek dagang, bahan yang diterbitkan oleh atau atas nama Wyeth Nutrition di Situs Web (misalnya teks dan gambar) yang dimiliki oleh Wyeth Nutrition atau pemberi lisensinya.\n                    "
+                    ),
+                    _c("br"),
+                    _vm._v(" \n                  ")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                    _vm._v(
+                      "\n                    Anda mungkin mereproduksi ekstrak dari Situs Web ini untuk penggunaan pribadi Anda sendiri (misalnya penggunaan non-komersial) asalkan Anda menyimpan semua hak kekayaan intelektual secara utuh dan dengan rasa hormat, termasuk pemberitahuan hak cipta yang mungkin muncul di konten tersebut (misalnya @2014 Wyeth Nutrition).\n                    "
+                    ),
+                    _c("br"),
+                    _vm._v(" \n                  ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "\n                  3.2. Konten Anda sediakan\n                  "
+                  ),
+                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                    _c("br"),
+                    _vm._v(
+                      "Anda mewakili untuk Wyeth Nutrition bahwa Anda baik sebagai penulis konten yang Anda kontribusikan ke Situs Web ini, ataupun bahwa Anda memiliki hak (yaitu: telah diberi izin oleh pemegang hak) dan mampu memberikan kontribusi atas konten tersebut (misalnya gambar, video, musik) ke Situs Web.\n                    "
+                    ),
+                    _c("br"),
+                    _vm._v(" \n                  ")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                    _vm._v(
+                      "\n                    Anda setuju bahwa konten tersebut akan diperlakukan sebagai bukan rahasia dan Anda memberikan Wyeth Nutrition royalti, berkelanjutan, dan lisensi luas secara gratis untuk menggunakan (termasuk untuk mengungkapkan, mereproduksi, mentransmisikan, mempublikasikan, atau menyiarkan) konten yang Anda berikan untuk tujuan yang berkaitan dengan bisnisnya.\n                    "
+                    ),
+                    _c("br"),
+                    _vm._v(" \n                  ")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                    _vm._v(
+                      "\n                    Harap dicatat bahwa Wyeth Nutrition bebas untuk memutuskan apakah menggunakan atau tidak menggunakan konten ini dan bahwa Wyeth Nutrition mungkin telah mengembangkan edisi serupa atau telah memperoleh konten tersebut dari sumber lain, dalam hal ini semua hak kekayaan intelektual di konten ini tetap ada pada Wyeth Nutrition dan pemberi lisensinya.\n                    "
+                    ),
+                    _c("br"),
+                    _vm._v(" \n                  ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "\n                  3.3. Kewajiban\n                  "
+                  ),
+                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                    _c("br"),
+                    _vm._v(
+                      "Sementara Wyeth Nutrition menggunakan semua upaya yang wajar untuk memastikan keakuratan dari bahan pada Situs Web kami dan untuk menghindari gangguan, kami tidak bertanggung jawab atas informasi yang tidak akurat, gangguan, penghentian atau peristiwa lain yang dapat menyebabkan Anda mengalami kerugian, baik secara langsung (misalnya kegagalan komputer) atau tidak langsung (misalnya kehilangan keuntungan). Setiap ketergantungan pada bahan-bahan dalam situs Web ini akan menjadi risiko Anda sendiri.\n                    "
+                    ),
+                    _c("br"),
+                    _vm._v(" \n                  ")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                    _vm._v(
+                      "\n                    Situs Web ini mungkin berisi hubungan ke situs-situs web di luar Wyeth Nutrition. Wyeth Nutrition tidak memiliki kontrol atas situs web pihak ketiga tersebut, tidak selalu mendukung mereka dan tidak bertanggung jawab untuk mereka, termasuk untuk konten, akurasi atau fungsi mereka. Sebagai akibatnya, kami mengharapkan agar Anda berhati-hati dalam meninjau pernyataan hukum situs-situs web pihak ketiga tersebut, termasuk menjaga diri tetap mengetahui informasi mengenai perubahan atas mereka.\n                    "
+                    ),
+                    _c("br"),
+                    _vm._v(" \n                  ")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                    _vm._v(
+                      '\n                    Anda dapat mengoperasikan situs pihak ketiga dan menginginkan hubungan ke Situs Web ini. Dalam hal ini, Wyeth Nutrition tidak keberatan dengan hubungan seperti itu asalkan Anda menggunakan homepage URL yang tepat dari Situs Web ini (misalnya hubungan yang tidak dalam) dan tidak menyarankan dengan cara apapun yang Anda berafiliasi dengan atau didukung oleh Wyeth Nutrition. Anda tidak harus menggunakan "framing" atau praktik serupa, dan harus memastikan bahwa hubungan ke Situs Web membuka pada jendela baru.\n                    '
+                    ),
+                    _c("br"),
+                    _vm._v(" \n                  ")
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("\n              Kontak kita\n              "),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _c("br"),
+                _vm._v(
+                  "Situs ini dioperasikan oleh PT. WYETH NUTRITION SDUAENAM\n                "
+                ),
+                _c("br"),
+                _vm._v(" \n              ")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _vm._v(
+                  "\n                Jika Anda memiliki pertanyaan atau komentar tentang Situs Web, jangan ragu untuk menghubungi kami melalui (i) telepon di 080018-21028 atau (ii) surat biasa di Perkantoran Hijau Arkadia, Jl. Let Jen. TB. Simatupang Kav. 88, Jakarta 12520, Indonesia. PO BOX 5555, Jakarta 12000.\n                "
+                ),
+                _c("br"),
+                _vm._v(" \n              ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("\n              Perubahan\n              "),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _c("br"),
+                _vm._v(
+                  "Wyeth Nutrition memiliki hak untuk membuat perubahan atas persyaratan penggunaan ini. Silakan lihat halaman ini pada setiap saat untuk meninjau persyaratan penggunaan dan informasi baru.\n                "
+                ),
+                _c("br"),
+                _vm._v(" \n              ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "\n              Hukum dan yurisdiksi yang mengatur\n              "
+              ),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _c("br"),
+                _vm._v(
+                  "Situs Web ini ditujukan untuk pengguna dari Indonesia saja. Wyeth Nutrition tidak membuat pernyataan bahwa produk dan konten Situs Web ini sesuai atau tersedia di lokasi selain Indonesia.\n                "
+                ),
+                _c("br"),
+                _vm._v(" \n              ")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
+                _vm._v(
+                  "Anda dan Wyeth Nutrition setuju bahwa setiap klaim atau sengketa yang berkaitan dengan situs web ini akan diatur oleh hukum Republik dan dibawa ke pengadilan dari Jakarta Selatan di Indonesia."
                 )
               ])
             ])
@@ -102453,6 +103023,123 @@ var staticRenderFns = [
     )
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaranSelesai.vue?vue&type=template&id=6b42c766&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/master/pendaftaranSelesai.vue?vue&type=template&id=6b42c766& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container-fluid page-body-wrapper full-page-wrapper" },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "content-wrapper d-flex align-items-center auth auth-bg-1 theme-one"
+        },
+        [
+          _c("div", { staticClass: "row w-100" }, [
+            _c("div", { staticClass: "col-md-8 mx-auto" }, [
+              _c(
+                "div",
+                { staticClass: "auto-form-wrapper" },
+                [
+                  _c("center", [_vm._v("DPMPTSP PROVINSI KEPRI")]),
+                  _vm._v(" "),
+                  _c("el-divider", [_vm._v("Konfirmasi Pendaftaran Email")]),
+                  _vm._v(" "),
+                  _c(
+                    "el-row",
+                    { attrs: { gutter: 20, type: "flex", justify: "center" } },
+                    [
+                      _c(
+                        "el-col",
+                        { attrs: { md: 4 } },
+                        [
+                          _c(
+                            "el-image",
+                            { attrs: { src: _vm.url.assets + "/email.png" } },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "image-slot",
+                                  attrs: { slot: "placeholder" },
+                                  slot: "placeholder"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  Loading\n                  "
+                                  ),
+                                  _c("span", { staticClass: "dot" }, [
+                                    _vm._v("...")
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-row",
+                    { attrs: { gutter: 20, type: "flex", justify: "center" } },
+                    [
+                      _c(
+                        "el-col",
+                        { staticClass: "text-center", attrs: { md: 18 } },
+                        [
+                          _c("p", [
+                            _vm._v(
+                              "Pendaftaran account anda sudah di terima, 1 step lagi untuk menyelesaikannya. silahkan konfirmasi email yang telah kami kirimkan ke email yang anda daftarkan sebelumnya"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-primary btn-sm",
+                              attrs: { href: _vm.url.web + "/login" }
+                            },
+                            [_vm._v("masuk SI-JEMPOL")]
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -117866,9 +118553,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _pendaftaran_vue_vue_type_template_id_d3f4e5da_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=template&id=d3f4e5da&scoped=true& */ "./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&scoped=true&");
+/* harmony import */ var _pendaftaran_vue_vue_type_template_id_d3f4e5da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=template&id=d3f4e5da& */ "./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&");
 /* harmony import */ var _pendaftaran_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=script&lang=js& */ "./resources/js/master/pendaftaran.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _pendaftaran_vue_vue_type_style_index_0_id_d3f4e5da_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css& */ "./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _pendaftaran_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=style&index=0&lang=css& */ "./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -117880,11 +118567,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _pendaftaran_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _pendaftaran_vue_vue_type_template_id_d3f4e5da_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _pendaftaran_vue_vue_type_template_id_d3f4e5da_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _pendaftaran_vue_vue_type_template_id_d3f4e5da___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _pendaftaran_vue_vue_type_template_id_d3f4e5da___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "d3f4e5da",
+  null,
   null
   
 )
@@ -117910,35 +118597,104 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css&":
-/*!******************************************************************************************************!*\
-  !*** ./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css& ***!
-  \******************************************************************************************************/
+/***/ "./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_d3f4e5da_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&id=d3f4e5da&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_d3f4e5da_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_d3f4e5da_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_d3f4e5da_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_d3f4e5da_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_d3f4e5da_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&scoped=true&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&scoped=true& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da& ***!
+  \****************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_d3f4e5da_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=template&id=d3f4e5da&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_d3f4e5da_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_d3f4e5da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=template&id=d3f4e5da& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaran.vue?vue&type=template&id=d3f4e5da&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_d3f4e5da___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_d3f4e5da_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_d3f4e5da___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/master/pendaftaranSelesai.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/master/pendaftaranSelesai.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _pendaftaranSelesai_vue_vue_type_template_id_6b42c766___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pendaftaranSelesai.vue?vue&type=template&id=6b42c766& */ "./resources/js/master/pendaftaranSelesai.vue?vue&type=template&id=6b42c766&");
+/* harmony import */ var _pendaftaranSelesai_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pendaftaranSelesai.vue?vue&type=script&lang=js& */ "./resources/js/master/pendaftaranSelesai.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _pendaftaranSelesai_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _pendaftaranSelesai_vue_vue_type_template_id_6b42c766___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _pendaftaranSelesai_vue_vue_type_template_id_6b42c766___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/master/pendaftaranSelesai.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/master/pendaftaranSelesai.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/master/pendaftaranSelesai.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaranSelesai_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaranSelesai.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaranSelesai.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaranSelesai_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/master/pendaftaranSelesai.vue?vue&type=template&id=6b42c766&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/master/pendaftaranSelesai.vue?vue&type=template&id=6b42c766& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaranSelesai_vue_vue_type_template_id_6b42c766___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaranSelesai.vue?vue&type=template&id=6b42c766& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/master/pendaftaranSelesai.vue?vue&type=template&id=6b42c766&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaranSelesai_vue_vue_type_template_id_6b42c766___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaranSelesai_vue_vue_type_template_id_6b42c766___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -117961,6 +118717,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_components_Profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/Profile */ "./resources/js/components/Profile.vue");
 /* harmony import */ var _js_master_login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/master/login */ "./resources/js/master/login.vue");
 /* harmony import */ var _js_master_pendaftaran__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/js/master/pendaftaran */ "./resources/js/master/pendaftaran.vue");
+/* harmony import */ var _js_master_pendaftaranSelesai__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/js/master/pendaftaranSelesai */ "./resources/js/master/pendaftaranSelesai.vue");
+
 
 
 
@@ -117981,6 +118739,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/pendaftaran',
     name: 'pendaftaran',
     component: _js_master_pendaftaran__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }, {
+    path: '/pendaftaran/selesai',
+    name: 'pendaftaran-selesai',
+    component: _js_master_pendaftaranSelesai__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: '/dashboard',
     name: 'dashboard',
@@ -118007,18 +118769,19 @@ __webpack_require__.r(__webpack_exports__);
 // const urlAxios = "http://localhost/ptsp_pemohon/api";
 // const urlBase = "ptsp_pemohon";
 // const urlWeb = "http://localhost/ptsp_pemohon";
-// const assets = "http://localhost/ptsp_pemohon/public/starAdmin/assets/images";
+// const assets = "http://localhost/ptsp_pemohon/public/images";
 // const perusahaanFile = "http://localhost/Resources/perusahaan";
 var urlAxios = "http://pemohon.appkepri.com/api";
 var urlBase = "";
 var urlWeb = "http://pemohon.appkepri.com";
-var assets = "http://pemohon.appkepri.com/public/starAdmin/assets/images";
+var assets = "http://pemohon.appkepri.com/public/images";
 var perusahaanFile = "http://appkepri.com/Resources/perusahaan";
 /* harmony default export */ __webpack_exports__["default"] = ({
   urlAxios: urlAxios,
   urlBase: urlBase,
   urlWeb: urlWeb,
-  perusahaanFile: perusahaanFile
+  perusahaanFile: perusahaanFile,
+  assets: assets
 });
 
 /***/ }),

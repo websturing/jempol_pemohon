@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use File;
 use App\Http\Controllers\perusahaanControl;
+use App\Mail\pendaftaranEmail;
+use Illuminate\Support\Facades\Mail;
 
 class pendaftaranControl extends Controller
 {
@@ -15,7 +17,10 @@ class pendaftaranControl extends Controller
         return view("panel.pendaftaran");
     }
 
-
+    function pendaftaranSelesai()
+    {
+        return view("panel.pendaftaran");
+    }
     function ToSelf(Request $r)
     {
         $type = $r->get("type");
@@ -78,5 +83,12 @@ class pendaftaranControl extends Controller
 
         $perusahaan_id = perusahaanControl::Insertperusahaan($perusahaan);
         self::UploadFileKeabsahan($upload);
+    }
+
+    public function SendEmailConfirmation(Request $r)
+    {
+        Mail::to("websturing.project@gmail.com")->send(new pendaftaranEmail());
+
+        return "email terkirim";
     }
 }
