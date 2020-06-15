@@ -9,6 +9,7 @@ use File;
 use App\Http\Controllers\perusahaanControl;
 use App\Mail\pendaftaranEmail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 class pendaftaranControl extends Controller
 {
@@ -83,11 +84,20 @@ class pendaftaranControl extends Controller
 
         $perusahaan_id = perusahaanControl::Insertperusahaan($perusahaan);
         self::UploadFileKeabsahan($upload);
+        self::SendEmailConfirmation($upload, $perusahaan_id);
     }
 
-    public function SendEmailConfirmation(Request $r)
+    public function SendEmailConfirmation(Request $r, $perusahaan_id)
     {
-        Mail::to("websturing.project@gmail.com")->send(new pendaftaranEmail());
+        $id = $perusahaan_id;
+        $url = url('/pendaftaran/confirmation?q=' . $id);
+
+        $perusahaan = $r->get("perusahaan");
+
+        $email = new Request();
+        $email->replace(['perusahaan' => $perusahaan, 'linkUrl' => $url]);
+
+        Mail::to($perusahaan['email'])->send(new pendaftaranEmail($email));
 
         return "email terkirim";
     }

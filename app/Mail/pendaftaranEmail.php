@@ -16,9 +16,12 @@ class pendaftaranEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public function __construct($email)
     {
-        //
+        $this->nama = $email['perusahaan']['nama'];
+        $this->email = $email['perusahaan']['email'];
+        $this->linkUrl = $email->linkUrl;
     }
 
     /**
@@ -30,6 +33,6 @@ class pendaftaranEmail extends Mailable
     {
         return $this->from("no-replay@dpmptsp.kepriprov.go.id")
             ->view('panel.email')
-            ->with(['nama' => "afriandi", 'website' => 'dpmptsp.kepriprov.go.id']);
+            ->with(['nama' => $this->nama, 'website' => 'dpmptsp.kepriprov.go.id', "confirmasi" => $this->linkUrl]);
     }
 }

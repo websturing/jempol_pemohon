@@ -391,7 +391,9 @@ export default {
         contact: null,
         aktif: null,
         created_on: null,
-        fullname: null
+        fullname: null,
+        create_on: "online",
+        aktif: "false"
       },
       upload: [
         {
@@ -496,7 +498,10 @@ export default {
               perusahaan: this.perusahaan,
               upload: this.upload
             })
-            .then(r => console.log(r));
+            .then(r => {
+              console.log(r);
+              window.location.href = urlBase.urlWeb + "/pendaftaran/selesai";
+            });
         } else {
           console.log("error submit!!");
           return false;

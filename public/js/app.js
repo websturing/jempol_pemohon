@@ -4027,6 +4027,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4408,7 +4410,7 @@ __webpack_require__.r(__webpack_exports__);
       widthPratinjau: "0%",
       objectURL: null,
       accepts: ["application/pdf"].join(","),
-      perusahaan: {
+      perusahaan: _defineProperty({
         perusahaan_id: null,
         perusahaan_code: null,
         npwp: null,
@@ -4419,8 +4421,9 @@ __webpack_require__.r(__webpack_exports__);
         contact: null,
         aktif: null,
         created_on: null,
-        fullname: null
-      },
+        fullname: null,
+        create_on: "online"
+      }, "aktif", "false"),
       upload: [{
         name: "Nomor Induk Kependudukan",
         nameFile: "Unggah Berkas NPWP",
@@ -4522,7 +4525,8 @@ __webpack_require__.r(__webpack_exports__);
             perusahaan: _this2.perusahaan,
             upload: _this2.upload
           }).then(function (r) {
-            return console.log(r);
+            console.log(r);
+            window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].urlWeb + "/pendaftaran/selesai";
           });
         } else {
           console.log("error submit!!");

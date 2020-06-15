@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\mdUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
@@ -70,12 +71,34 @@ class perusahaanControl extends Controller
             "alamat"  => $data["alamat"],
             "email"  => $data["email"],
             "contact"  => $data["contact"],
-            "create_on"  => "walkin",
+            "create_on"  => $data['create_on'],
+            "aktif"  => $data['aktif'],
         );
 
         mdperusahaan::insert($toDB);
         $id = DB::getPdo()->lastInsertId();
 
         return $id;
+    }
+
+    public static function konfirmasiViaEmail(Request $r)
+    {
+        $id = $r->get('q');
+        $perusahaan = mdPerusahaan::where("perusahaan_id", $id)->get();
+
+
+        $ToDBPerusahaan = array(
+            "aktif" => true,
+        );
+
+        mdPerusahaan::where('perusahaan_id', $id)->update($ToDBPerusahaan);
+
+        $ToDBUsers = array(
+            "username" => $perusahaan[0]->email,
+            "password" => md5('admin'),
+            "perusahaan_id" => $id,
+            "is_active" => "true",
+        );
+        mdUser::insert($ToDBUsers);
     }
 }

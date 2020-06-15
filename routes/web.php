@@ -15,6 +15,7 @@
 Route::get("/pendaftaran", "pendaftaranControl@index");
 Route::get("/pendaftaran/selesai", "pendaftaranControl@pendaftaranSelesai");
 Route::get("/pendaftaran/sendemail", "pendaftaranControl@SendEmailConfirmation");
+Route::get("/pendaftaran/confirmation", "perusahaanControl@konfirmasiViaEmail");
 Route::post("/pendaftaran/form", "pendaftaranControl@ToSelf");
 
 
