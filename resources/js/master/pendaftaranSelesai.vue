@@ -20,7 +20,7 @@
               <el-col :md="18" class="text-center">
                 <p>Pendaftaran account anda sudah di terima, 1 step lagi untuk menyelesaikannya. silahkan konfirmasi email yang telah kami kirimkan ke email yang anda daftarkan sebelumnya</p>
                 <a
-                  href="http://192.168.123.37/Lpanel/login'"
+                  href="http://appkepri.com/siJempol/login"
                   class="btn btn-primary btn-sm"
                 >masuk SI-JEMPOL</a>
               </el-col>
