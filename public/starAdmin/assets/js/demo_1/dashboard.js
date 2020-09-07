@@ -526,32 +526,32 @@
         data: {
           labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
           datasets: [{
-              label: 'OVERDUE',
-              data: Marketing_data_1_1,
-              backgroundColor: '#826af9',
-              borderColor: '#826af9',
-              borderWidth: 0
-            }, {
-              label: 'SNOOZED',
-              data: Marketing_data_1_2,
-              backgroundColor: '#9e86ff',
-              borderColor: '#9e86ff',
-              borderWidth: 0
-            },
-            {
-              label: 'COMPLETED',
-              data: Marketing_data_1_3,
-              backgroundColor: '#d0aeff',
-              borderColor: '#d0aeff',
-              borderWidth: 0
-            },
-            {
-              label: 'OVERDUE',
-              data: Marketing_data_1_4,
-              backgroundColor: '#f7d2ff',
-              borderColor: '#f7d2ff',
-              borderWidth: 0
-            }
+            label: 'OVERDUE',
+            data: Marketing_data_1_1,
+            backgroundColor: '#826af9',
+            borderColor: '#826af9',
+            borderWidth: 0
+          }, {
+            label: 'SNOOZED',
+            data: Marketing_data_1_2,
+            backgroundColor: '#9e86ff',
+            borderColor: '#9e86ff',
+            borderWidth: 0
+          },
+          {
+            label: 'COMPLETED',
+            data: Marketing_data_1_3,
+            backgroundColor: '#d0aeff',
+            borderColor: '#d0aeff',
+            borderWidth: 0
+          },
+          {
+            label: 'OVERDUE',
+            data: Marketing_data_1_4,
+            backgroundColor: '#f7d2ff',
+            borderColor: '#f7d2ff',
+            borderWidth: 0
+          }
           ]
         },
         options: {
@@ -633,19 +633,19 @@
         data: {
           labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
           datasets: [{
-              label: 'Profit',
-              data: [330, 380, 230, 400, 309, 530, 340],
-              backgroundColor: "#0f5bff",
-              borderColor: '#0f5bff',
-              borderWidth: 0
-            },
-            {
-              label: 'Target',
-              data: [600, 600, 600, 600, 600, 600, 600],
-              backgroundColor: '#e5e9f2',
-              borderColor: '#e5e9f2',
-              borderWidth: 0
-            }
+            label: 'Profit',
+            data: [330, 380, 230, 400, 309, 530, 340],
+            backgroundColor: "#0f5bff",
+            borderColor: '#0f5bff',
+            borderWidth: 0
+          },
+          {
+            label: 'Target',
+            data: [600, 600, 600, 600, 600, 600, 600],
+            backgroundColor: '#e5e9f2',
+            borderColor: '#e5e9f2',
+            borderWidth: 0
+          }
           ]
         },
         options: {

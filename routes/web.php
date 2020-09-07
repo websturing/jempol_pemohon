@@ -11,6 +11,7 @@
 |
 */
 
+Route::GET("/", "appControl@login");
 
 Route::get("/pendaftaran", "pendaftaranControl@index");
 Route::get("/pendaftaran/selesai", "pendaftaranControl@pendaftaranSelesai");
@@ -18,6 +19,22 @@ Route::get("/pendaftaran/sendemail", "pendaftaranControl@SendEmailConfirmation")
 Route::get("/pendaftaran/confirmation", "perusahaanControl@konfirmasiViaEmail");
 Route::post("/pendaftaran/form", "pendaftaranControl@ToSelf");
 
+
+
+Route::POST("/master/opd", "opdControl@index");
+
+
+Route::POST("/perizinan/permohonan", "permohonanControl@index");
+Route::POST("/perizinan/perusahaan", "perusahaanControl@index");
+
+Route::POST("/track", "trackControl@index");
+
+
+Route::POST("/opd/izin", "opdIzinControl@index");
+
+
+
+Route::POST("/surat/rekomendasi", "suratRekomendasiControl@index");
 
 
 Route::post("/master/modul", "modulControl@index");
@@ -29,6 +46,7 @@ Route::POST("/master/users", "userControl@index");
 Route::POST("/master/opd", "opdControl@index");
 
 Route::POST("/master/perusahaan", "perusahaanControl@index");
+
 
 
 Route::GET("/login", "appControl@login");

@@ -13,7 +13,7 @@
                 :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
               >
                 <el-input
-                  placeholder="Username"
+                  placeholder="Email Perusahaan"
                   prefix-icon="mdi mdi-account"
                   v-model="login.username"
                   :autofocus="true"
@@ -77,11 +77,11 @@ export default {
       isLoading: false,
       login: {
         username: null,
-        password: null
+        password: null,
       },
       url: {
-        pendaftaran: urlBase.urlWeb + "/pendaftaran"
-      }
+        pendaftaran: urlBase.urlWeb + "/pendaftaran",
+      },
     };
   },
   mounted() {
@@ -92,21 +92,21 @@ export default {
       this.$notify({
         title: s,
         message: m,
-        type: type
+        type: type,
       });
     },
     redirect() {
       window.location.href = urlBase.urlWeb + "/dashboard";
     },
     Submit() {
-      this.$refs["login"].validate(valid => {
+      this.$refs["login"].validate((valid) => {
         if (valid) {
           this.isLoading = true;
           axios
             .post(urlBase.urlWeb + "/login/loginSubmit", {
-              login: this.login
+              login: this.login,
             })
-            .then(r => {
+            .then((r) => {
               console.log(r);
               (this.isLoading = false),
                 r.data.code === "500"
@@ -118,7 +118,7 @@ export default {
           return false;
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>

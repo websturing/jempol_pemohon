@@ -8,12 +8,15 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title>Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="<?php echo e(url('public/starAdmin/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css')); ?>">
+    <link rel="stylesheet"
+        href="<?php echo e(url('public/starAdmin/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(url('public/starAdmin/assets/vendors/iconfonts/ionicons/css/ionicons.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(url('public/starAdmin/assets/vendors/iconfonts/typicons/src/font/typicons.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(url('public/starAdmin/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')); ?>">
+    <link rel="stylesheet"
+        href="<?php echo e(url('public/starAdmin/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(url('public/starAdmin/assets/vendors/css/vendor.bundle.base.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(url('public/starAdmin/assets/vendors/css/vendor.bundle.addons.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(url('public/css/icon.css')); ?>">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -38,15 +41,17 @@
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center">
                     <ul class="navbar-nav">
-                        <li class="nav-item font-weight-semibold d-none d-lg-block">Pengaduaan / Pertanyaan : (+62)811-7779-727</li>
+                        <li class="nav-item font-weight-semibold d-none d-lg-block">Informasi Layanan :
+                            (+62)811-7779-727</li>
                     </ul>
-                    <form class="ml-auto search-form d-none d-md-block" action="#">
+                    <!-- <form class="ml-auto search-form d-none d-md-block" action="#">
                         <div class="form-group">
                             <input type="search" class="form-control" placeholder="Search Here">
                         </div>
-                    </form>
+                    </form> -->
 
-                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                        data-toggle="offcanvas">
                         <span class="mdi mdi-menu"></span>
                     </button>
                 </div>
@@ -59,7 +64,9 @@
                         <li class="nav-item nav-profile">
                             <a href="#" class="nav-link">
                                 <div class="profile-image">
-                                    <img class="img-xs rounded-circle" src="<?php echo e(url('public/starAdmin/assets/images/faces-clipart/pic-1.png')); ?>" alt="profile image">
+                                    <img class="img-xs rounded-circle"
+                                        src="<?php echo e(url('public/starAdmin/assets/images/faces-clipart/pic-1.png')); ?>"
+                                        alt="profile image">
                                     <div class="dot-indicator bg-success"></div>
                                 </div>
                                 <div class="text-wrapper">
@@ -82,7 +89,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                                aria-controls="ui-basic">
                                 <i class="menu-icon typcn typcn-coffee"></i>
                                 <span class="menu-title">Pengajuan Permohonan</span>
                                 <i class="menu-arrow"></i>
@@ -90,13 +98,16 @@
                             <div class="collapse" id="ui-basic">
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="pages/ui-features/buttons.html">Baru</a>
+                                        <a class="nav-link" href="<?php echo e(url('/permohonan/proses')); ?>">Proses</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="pages/ui-features/dropdowns.html">Proses</a>
+                                        <a class="nav-link" href="<?php echo e(url('/permohonan/selesai')); ?>">Selesai</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="pages/ui-features/typography.html">Tertunda</a>
+                                        <a class="nav-link" href="<?php echo e(url('/permohonan/tertunda')); ?>">Tertunda</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo e(url('/permohonan/track')); ?>">Track</a>
                                     </li>
                                 </ul>
                             </div>

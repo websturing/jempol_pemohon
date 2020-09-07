@@ -10,7 +10,7 @@
                   <a href="#">{{perusahaan.fullname}}</a>
                 </li>
               </ul>
-              <ul class="quick-links ml-auto">
+              <!-- <ul class="quick-links ml-auto">
                 <li>
                   <a href="#">Settings</a>
                 </li>
@@ -20,7 +20,7 @@
                 <li>
                   <a href="#">Watchlist</a>
                 </li>
-              </ul>
+              </ul>-->
             </div>
           </div>
         </div>
@@ -28,62 +28,25 @@
           <div class="card">
             <div class="card-body">
               <div class="d-flex justify-content-between">
-                <h4 class="card-title mb-0">Data</h4>
+                <!-- <h4 class="card-title mb-0">Data</h4>
                 <a href="#">
                   <small>Show All</small>
-                </a>
+                </a>-->
               </div>
-              <p>Data Pengajuan Permohonan Perizinan / Nonperizinan DPMPTSP Provinsi Kepri</p>
-              <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Permohonan Code</th>
-                      <th>Izin / Nonizin</th>
-                      <th>Sektor</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>INV-87239</td>
-                      <td>Viola Ford</td>
-                      <td>Paid</td>
-                      <td>20 Jan 2019</td>
-                      <td>$755</td>
-                    </tr>
-                    <tr>
-                      <td>INV-87239</td>
-                      <td>Dylan Waters</td>
-                      <td>Unpaid</td>
-                      <td>23 Feb 2019</td>
-                      <td>$800</td>
-                    </tr>
-                    <tr>
-                      <td>INV-87239</td>
-                      <td>Louis Poole</td>
-                      <td>Unpaid</td>
-                      <td>25 Mar 2019</td>
-                      <td>$463</td>
-                    </tr>
-                    <tr>
-                      <td>INV-87239</td>
-                      <td>Vera Howell</td>
-                      <td>Paid</td>
-                      <td>27 Mar 2019</td>
-                      <td>$235</td>
-                    </tr>
-                    <tr>
-                      <td>INV-87239</td>
-                      <td>Allie Goodman</td>
-                      <td>Unpaid</td>
-                      <td>1 Apr 2019</td>
-                      <td>$657</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <el-row>
+                <el-col :span="24">
+                  <div class="sub-title">Cari Jenis Layanan</div>
+                  <br />
+                  <el-autocomplete
+                    class="wide-dropdown"
+                    v-model="state2"
+                    :fetch-suggestions="querySearch"
+                    placeholder="Please Input"
+                    :trigger-on-focus="false"
+                    @select="handleSelect"
+                  ></el-autocomplete>
+                </el-col>
+              </el-row>
             </div>
           </div>
         </div>
@@ -153,21 +116,60 @@ export default {
     return {
       perusahaan: {},
       url: {
-        assets: urlBase.asset
-      }
+        assets: urlBase.asset,
+        link: urlBase.urlWeb,
+      },
+      state2: "",
+      links: "",
     };
   },
   mounted() {
     this.GetPerusahaan();
+    this.GetNamaizin();
   },
   methods: {
     GetPerusahaan() {
       axios
         .post(urlBase.urlWeb + "/master/perusahaan", {
-          type: "perusahaanById"
+          type: "perusahaanById",
         })
-        .then(r => (this.perusahaan = r.data[0]));
-    }
-  }
+        .then((r) => (this.perusahaan = r.data[0]));
+    },
+    querySearch(queryString, cb) {
+      var links = this.links;
+      var results = queryString
+        ? links.filter(this.createFilter(queryString))
+        : links;
+      // call callback function to return suggestions
+      cb(results);
+    },
+    createFilter(queryString) {
+      return (a) => {
+        return a.value.toLowerCase().indexOf(queryString.toLowerCase()) > -1;
+      };
+    },
+    GetNamaizin() {
+      axios
+        .post(urlBase.urlWeb + "/opd/izin", {
+          type: "namaIzin",
+        })
+        .then(
+          (r) =>
+            // console.log(r.data),
+            (this.links = r.data)
+        );
+    },
+    handleSelect(item) {
+      this.$router.push({
+        name: "permohonan-pengajuan",
+        params: { id: item.Crypt },
+      });
+    },
+  },
 };
 </script>
+<style scoped>
+.wide-dropdown {
+  width: 600px !important;
+}
+</style>

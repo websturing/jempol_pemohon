@@ -22,9 +22,15 @@ class perusahaanControl extends Controller
             return self::dataBynpwp($r);
         } elseif ($type == 'UpdateById') {
             return self::UpdateById($r);
+        } elseif ($type == 'perusahaanById') {
+            return self::perusahaanById($r);
         }
     }
 
+    function perusahaanById(Request $r)
+    {
+        return mdPerusahaan::where("perusahaan_id", Session::get('perusahaan_id'))->get();
+    }
     function dataall(Request $r)
     {
         return mdperusahaan::all();
@@ -97,8 +103,17 @@ class perusahaanControl extends Controller
             "username" => $perusahaan[0]->email,
             "password" => md5('admin'),
             "perusahaan_id" => $id,
-            "is_active" => "true",
+            "is_active" => "true"
         );
         mdUser::insert($ToDBUsers);
+        $user_id = DB::getPdo()->lastInsertId();
+
+        Session::put("aclGroupId", "0");
+        Session::put("username",  $perusahaan[0]->email);
+        Session::put("opd_id", "0");
+        Session::put("user_id", $user_id);
+        Session::put("perusahaan_id", $perusahaan[0]->perusahaan_id);
+
+        return redirect('/dashboard');
     }
 }

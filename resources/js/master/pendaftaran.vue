@@ -3,7 +3,7 @@
     <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
       <div class="row w-100">
         <div class="col-lg-12 mx-auto">
-          <div class="auto-form-wrapper">
+          <div class="auto-form-wrapper" v-loading="termLoading">
             <el-row :gutter="5">
               <el-col :md="2">
                 <center>
@@ -21,7 +21,7 @@
             </el-row>
             <el-steps :active="steps.active" finish-status="success">
               <el-step title="Step 1" description="Identitas Perusahaan"></el-step>
-              <el-step title="Step 2" description="Berkas keabasahaan Perusahaan"></el-step>
+              <el-step title="Step 2" description="Berkas Perusahaan"></el-step>
               <el-step title="Step 3" description="Selesai"></el-step>
             </el-steps>
             <el-form
@@ -51,19 +51,51 @@
                 <el-row :gutter="10">
                   <el-col :md="3">
                     <el-form-item
+                      label="JENIS USAHA"
+                      class="itemWarp"
+                      prop="jenis_usaha"
+                      :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
+                    >
+                      <el-select
+                        v-model="perusahaan.jenis_usaha"
+                        size="small"
+                        placeholder="Jenis Usaha"
+                        style="top:-30px !important"
+                        prop="jenis_usaha"
+                        @change="jenisusahachange()"
+                        :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
+                      >
+                        <el-option
+                          v-for="item in options.jenis"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        ></el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :md="3" v-if="show.kategori">
+                    <el-form-item
                       label="KATEGORI"
                       class="itemWarp"
                       prop="kategori"
                       :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
                     >
-                      <el-input
-                        size="small"
+                      <el-select
                         v-model="perusahaan.kategori"
-                        placeholder="Kategori"
-                        style="width: 100%;"
-                        class="itemDS"
-                        :disabled="readonly"
-                      ></el-input>
+                        size="small"
+                        placeholder="Jenis Usaha"
+                        style="top:-30px !important"
+                        prop="jenis_usaha"
+                        :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
+                      >
+                        <el-option
+                          v-for="item in options.kategori"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        ></el-option>
+                      </el-select>
                     </el-form-item>
                   </el-col>
                   <el-col :md="11">
@@ -104,7 +136,7 @@
                   </el-col>
                   <el-col :md="5">
                     <el-form-item
-                      label="Hp"
+                      label="Telp / Hp"
                       class="itemWarp"
                       prop="contact"
                       :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
@@ -112,7 +144,7 @@
                       <el-input
                         size="small"
                         v-model="perusahaan.contact"
-                        placeholder="xxxx.xxxx.xxxx"
+                        placeholder="(kode area) xxxx.xxxx.xxxx"
                         class="itemDS"
                         style="width: 100% !important;"
                         :disabled="readonly"
@@ -132,10 +164,36 @@
                         size="small"
                         type="textarea"
                         v-model="perusahaan.alamat"
-                        placeholder="xxxxx@xxx.com"
+                        placeholder="Alamat Perusahaan"
                         class="itemDS"
                         style="width: 100% !important;"
                         :disabled="readonly"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="10" v-if="show.kategori">
+                  <el-divider content-position="left">CONTACT PERSON</el-divider>
+                  <br />
+                  <el-col :md="4">
+                    <el-form-item label="Nama Pemohon" class="itemWarp" prop="pemohon">
+                      <el-input
+                        size="small"
+                        v-model="perusahaan.pemohon"
+                        placeholder="Nama Pengurus"
+                        class="itemDS"
+                        style="width: 100% !important;"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :md="4">
+                    <el-form-item label="Hp" class="itemWarp" prop="hp">
+                      <el-input
+                        size="small"
+                        v-model="perusahaan.hp"
+                        placeholder="hp Pengurus"
+                        class="itemDS"
+                        style="width: 100% !important;"
                       ></el-input>
                     </el-form-item>
                   </el-col>
@@ -169,16 +227,17 @@
                   <el-col :md="2">NPWP</el-col>
                   <el-col :md="22">{{perusahaan.npwp}}</el-col>
                   <el-col :md="2">Nama</el-col>
-                  <el-col :md="22">{{perusahaan.fullname}}</el-col>
+                  <el-col :md="22" v-if="perusahaan.kategori == 'Perorangan'">{{perusahaan.nama}}</el-col>
+                  <el-col :md="22" v-else>{{perusahaan.kategori}}. {{perusahaan.nama}}</el-col>
                   <el-col :md="2">Email / Hp</el-col>
                   <el-col :md="22">{{perusahaan.email}} / {{perusahaan.contact}}</el-col>
                   <el-col :md="2">Alamat</el-col>
                   <el-col :md="22">{{perusahaan.alamat}}</el-col>
                 </el-row>
-                <el-divider content-position="left">Berkas keabasahaan Perusahaan</el-divider>
+                <el-divider content-position="left">Berkas Perusahaan</el-divider>
                 <el-table :data="upload" border style="width: 100%">
-                  <el-table-column prop="name" label="Nama"></el-table-column>
-                  <el-table-column prop="nameFile" label="Nama Berkas"></el-table-column>
+                  <el-table-column prop="name" label></el-table-column>
+                  <el-table-column prop="nameFile" label></el-table-column>
                   <el-table-column label=" " width="120">
                     <template slot-scope="scope">
                       <el-button
@@ -199,7 +258,7 @@
             >Sebelumnya</el-button>
             <el-button type="primary" @click="nextStep">{{steps.button}}</el-button>
           </div>
-          <ul class="auth-footer">
+          <!-- <ul class="auth-footer">
             <li>
               <a href="#">Conditions</a>
             </li>
@@ -209,7 +268,7 @@
             <li>
               <a href="#">Terms</a>
             </li>
-          </ul>
+          </ul>-->
           <p class="footer-text text-center">copyright © 2020 DPMPMTSP KEPRI. All rights reserved.</p>
         </div>
       </div>
@@ -230,6 +289,7 @@
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
+      v-loading="termLoading"
     >
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -377,10 +437,12 @@ import urlBase from "@/js/url";
 export default {
   data() {
     return {
+      termLoading: false,
       widthPratinjau: "0%",
       objectURL: null,
       accepts: ["application/pdf"].join(","),
       perusahaan: {
+        jenis_usaha: null,
         perusahaan_id: null,
         perusahaan_code: null,
         npwp: null,
@@ -393,11 +455,13 @@ export default {
         created_on: null,
         fullname: null,
         create_on: "online",
-        aktif: "false"
+        aktif: "false",
+        pemohon: null,
+        hp: null,
       },
       upload: [
         {
-          name: "Nomor Induk Kependudukan",
+          name: "Nomor Pokok Wajib Pajak",
           nameFile: "Unggah Berkas NPWP",
           praname: "Unggah Berkas NPWP",
           type: null,
@@ -407,7 +471,7 @@ export default {
           button: false,
           files: null,
           css: null,
-          fileTemp: null
+          fileTemp: null,
         },
         {
           name: "Akta Pendirian / Perubahan",
@@ -420,7 +484,7 @@ export default {
           button: false,
           files: null,
           css: null,
-          fileTemp: null
+          fileTemp: null,
         },
         {
           name: "NIB OSS",
@@ -433,7 +497,7 @@ export default {
           button: false,
           files: null,
           css: null,
-          fileTemp: null
+          fileTemp: null,
         },
         {
           name: "Izin Usaha / KBLI",
@@ -446,25 +510,74 @@ export default {
           button: false,
           files: null,
           css: null,
-          fileTemp: null
-        }
+          fileTemp: null,
+        },
       ],
       steps: {
         active: 1,
         button: "selanjutnya",
-        body: [true, false, false]
+        body: [true, false, false],
       },
       readonly: false,
       isLoading: false,
       login: {
         username: null,
-        password: null
+        password: null,
       },
       url: {
         pendaftaran: urlBase.urlWeb + "/pendaftaran",
-        publicImages: urlBase.urlWeb + "/public/images"
+        publicImages: urlBase.urlWeb + "/public/images",
       },
-      empty: []
+      empty: [],
+      options: {
+        jenis: [
+          {
+            value: "Badan Usaha",
+            label: "Badan Usaha",
+          },
+          {
+            value: "Perorangan",
+            label: "Perorangan",
+          },
+        ],
+        kategori: [
+          {
+            value: "PT",
+            label: "PT",
+          },
+          {
+            value: "CV",
+            label: "CV",
+          },
+          {
+            value: "FRIMA",
+            label: "FIRMA",
+          },
+          {
+            value: "YAYASAN",
+            label: "YAYASAN",
+          },
+          {
+            value: "KOPERASI",
+            label: "KOPERASI",
+          },
+          {
+            value: "KELOMPOK MASYARAKAT",
+            label: "KELOMPOK MASYARAKAT",
+          },
+          {
+            value: "PERSERODA",
+            label: "PERSERODA",
+          },
+          {
+            value: "PERUMDA",
+            label: "PERUMDA",
+          },
+        ],
+      },
+      show: {
+        kategori: false,
+      },
     };
   },
   mounted() {},
@@ -475,32 +588,44 @@ export default {
     GetPerusahaan() {
       axios
         .post(urlBase.urlWeb + "/master/perusahaan", {
-          type: "perusahaanById"
+          type: "perusahaanById",
         })
-        .then(r => (this.perusahaan = r.data[0]));
+        .then((r) => (this.perusahaan = r.data[0]));
     },
     notif(s, m, type) {
       this.$notify({
         title: s,
         message: m,
-        type: type
+        type: type,
       });
     },
     redirect() {
       window.location.href = urlBase.urlWeb + "/dashboard";
     },
+    jenisusahachange() {
+      if (this.perusahaan.jenis_usaha == "Perorangan") {
+        this.show.kategori = false;
+        this.perusahaan.kategori = "PERORANGAN";
+      } else {
+        this.show.kategori = true;
+        this.perusahaan.kategori = null;
+      }
+    },
     Submit() {
-      this.$refs["pendaftaranRefs"].validate(valid => {
+      this.$refs["pendaftaranRefs"].validate((valid) => {
         if (valid) {
+          this.termLoading = true;
           axios
             .post(urlBase.urlWeb + "/pendaftaran/form", {
               type: "daftar",
               perusahaan: this.perusahaan,
-              upload: this.upload
+              upload: this.upload,
             })
-            .then(r => {
+            .then((r) => {
+              this.termLoading = false;
               console.log(r);
               window.location.href = urlBase.urlWeb + "/pendaftaran/selesai";
+              this.termLoading = false;
             });
         } else {
           console.log("error submit!!");
@@ -513,9 +638,9 @@ export default {
       if (next == 2) {
         this.CheckUpload();
       } else if (next == 3) {
-        this.term();
+        this.Submit();
       } else {
-        this.$refs["pendaftaranRefs"].validate(valid => {
+        this.$refs["pendaftaranRefs"].validate((valid) => {
           if (valid) {
             this.stepButton();
           } else {
@@ -567,7 +692,7 @@ export default {
 
       let fileReader = new FileReader();
       fileReader.readAsDataURL(event.target.files[0]);
-      fileReader.onload = e => {
+      fileReader.onload = (e) => {
         this.upload[i].files = e.target.result;
       };
     },
@@ -583,9 +708,9 @@ export default {
         .post(urlBase.urlWeb + "/pendaftaran/form", {
           type: "UploadFileKeabsahan",
           upload: this.upload,
-          perusahaan: this.perusahaan
+          perusahaan: this.perusahaan,
         })
-        .then(r => console.log(r.data));
+        .then((r) => console.log(r.data));
     },
     CheckUpload() {
       this.empty = [];
@@ -598,11 +723,11 @@ export default {
       if (!this.empty.length) {
         this.stepButton();
       }
-    }
-  }
+    },
+  },
 };
 </script>
-<style>
+<style scope>
 .itemDS {
   top: -30px !important;
   width: 100% !important;

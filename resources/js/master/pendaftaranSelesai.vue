@@ -19,7 +19,10 @@
             <el-row :gutter="20" type="flex" justify="center">
               <el-col :md="18" class="text-center">
                 <p>Pendaftaran account anda sudah di terima, 1 step lagi untuk menyelesaikannya. silahkan konfirmasi email yang telah kami kirimkan ke email yang anda daftarkan sebelumnya</p>
-                <a :href="url.web+'/login'" class="btn btn-primary btn-sm">masuk SI-JEMPOL</a>
+                <a
+                  href="http://192.168.123.37/Lpanel/login'"
+                  class="btn btn-primary btn-sm"
+                >masuk SI-JEMPOL</a>
               </el-col>
             </el-row>
           </div>
@@ -36,9 +39,9 @@ export default {
     return {
       url: {
         assets: urlBase.assets,
-        web: urlBase.urlWeb
-      }
+        web: urlBase.urlWeb,
+      },
     };
-  }
+  },
 };
 </script>
